@@ -1,0 +1,157 @@
+---
+title: "PISA_Grafiken"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+## Daten
+
+```{r}
+library(haven)
+library(tidyverse)
+library(sjlabelled)
+CY08MSP_STU_COG <- read_sav("~/Downloads/CY08MSP_STU_COG.SAV")
+data_pisa_ger_2022_cog <- 
+  CY08MSP_STU_COG |> 
+  filter(CNTRYID == 276)
+
+CY08MSP_STU_QQQ <- read_sav("~/Downloads/CY08MSP_STU_QQQ.sav")
+data_pisa_ger_2022_qqq <- 
+  CY08MSP_STU_QQQ |> 
+  filter(CNTRYID == 276)
+
+```
+
+## Realistisch simulierte Daten
+
+```{r}
+library(tidyverse)
+library(ggdist)
+library(bayestestR)
+library(hrbrthemes)
+library(geomtextpath)
+data_sim_lesen <- 
+  tibble(
+  `Lesen` = c(distribution_normal(500, 484, 111), 
+              distribution_normal(500, 509, 100), 
+              distribution_normal(500, 480, 106)),
+  `Jahr` = c(rep("2000", 500),
+             rep("2015", 500),
+             rep("2022", 500))
+  )
+
+ggplot(data_sim_lesen, aes(x = Lesen, y = Jahr)) + 
+  stat_slabinterval()
+```
+
+## Materialien für Abfrage
+
+### True Effect Size
+
+```{r}
+plot_true_effsize <- 
+  ggplot(data.frame(x = c(0, 1000)), aes(x)) +
+  geom_textline(
+    stat = "function", 
+    fun = dnorm,
+    args = list(mean = 509, sd = 100),
+    label = "PISA Lesen 2015",
+    size = 3, 
+    fontface = 1, 
+    hjust = .8, 
+    vjust = 0,
+    color = "purple"
+  ) +
+  stat_function(
+    geom = "area", 
+    fun = dnorm,
+    args = list(mean = 509, sd = 100),
+    fill = "#a01ff020",
+    color="#ffffff00"
+  ) +
+  geom_textline(
+    stat = "function", 
+    fun = dnorm,
+    args = list(mean = 480, sd = 106),
+    label = "PISA Lesen 2022",
+    size = 3, 
+    fontface = 1, 
+    hjust = .2, 
+    vjust = 0,
+    color = "orange"
+  ) +
+  stat_function(
+    geom = "area", 
+    fun = dnorm,
+    args = list(mean = 480, sd = 106),
+    fill = "#ffa50020",
+    color="#ffffff00"
+  ) +
+  xlab("Punkte auf der PISA Skala") +
+  ylab("") +
+  theme_minimal() + 
+  theme(axis.text.y = element_blank())
+
+plot_true_effsize
+
+ggsave(
+  "true_eff.png",
+  plot_true_effsize,
+  dpi = 600,
+  height = 3,
+  width = 4,
+  units = 
+)
+
+(509-480)/sqrt((106^2+100^2)/2)
+effectsize::hedges_g(distribution_normal(1000, 508, 100), distribution_normal(1000, 480, 106))
+```
+
+```{r}
+data_herkunftsdisp <- 
+  tibble(ISCED = ifelse(data_pisa_ger_2022_qqq$HISCED < 11,
+                        data_pisa_ger_2022_qqq$HISCED, NA),
+         READING_ISCED = ISCED + bayestestR::distribution_normal(length(ISCED), 0 , 6),
+         READING_ISCED_PISASTD = ((READING_ISCED - 
+                                     mean(READING_ISCED, na.rm = T))/
+                                    sd(READING_ISCED, na.rm = T))*106 + 480,
+         `SchulabschlussEltern` = case_when(ISCED == 1 ~ "kein Grundschulbesuch",
+                                             ISCED == 2 ~ "Grundschulbesuch",
+                                             ISCED == 3 ~ "Sekundar I",
+                                             ISCED == 4 ~ "Sekundar I",
+                                             ISCED == 5 ~ "Fachhochschulreife",
+                                             ISCED == 6 ~ "allg. Hochschulreife",
+                                             ISCED == 7 ~ "Post-Sekundarstufe",
+                                             ISCED == 8 ~ "Bachelor (äquiv.)",
+                                             ISCED == 9 ~ "Master (äquiv.)",
+                                             ISCED == 10 ~ "PhD (äquiv.)"),
+         `Schulabschluss Eltern` = factor(`SchulabschlussEltern`,
+                                          levels = c("kein Grundschulbesuch",
+                                                     "Grundschulbesuch",
+                                                     "Sekundar I",
+                                                     "Fachhochschulreife",
+                                                     "allg. Hochschulreife",
+                                                     "Post-Sekundarstufe",
+                                                     "Bachelor (äquiv.)",
+                                                     "Master (äquiv.)",
+                                                     "PhD (äquiv.)"))) |> 
+  filter(`Schulabschluss Eltern` != "NA")
+
+
+ggplot(data_herkunftsdisp,
+       aes(y = `Schulabschluss Eltern`,
+           x = READING_ISCED_PISASTD)) + 
+  ggforce::geom_sina(alpha = .2) + 
+  xlab("PISA Lesen") + 
+  theme_minimal()
+
+ggsave(
+  "herk_disp.png",
+  dpi = 600,
+  height = 4,
+  width = 5.3,
+  units = 
+)
+```

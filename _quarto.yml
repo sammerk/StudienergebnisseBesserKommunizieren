@@ -1,0 +1,21 @@
+project:
+  type: manuscript
+
+manuscript:
+  article: index.qmd
+
+format:
+  html:
+    comments:
+      hypothesis: false
+  apaquarto-docx: default
+  #apaquarto-pdf: 
+    # Can be jou (journal), man (manuscript), stu (student), or doc (document)
+  #  documentmode: jou
+  #  keep-tex: true
+    
+
+execute:
+  freeze: auto
+
+
