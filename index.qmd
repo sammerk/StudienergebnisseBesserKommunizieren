@@ -205,7 +205,7 @@ In diesem Kontext untersucht die vorliegende Studie, inwiefern verbreitete Stand
 In der Berichterstattung zu den Ergebnissen der PISA2022-Kohorte wurden durch journalistische Medien zahlreiche Darstellungsformate gewählt, insbesondere Line Graphs [siehe Tabelle @tbl-pisalinegraphs], was angesichts der Anlage des PISA als Trendstudie [@döring2016] konsequent erscheint.
 
 |  |  |  |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | ![](img/sz.png){width="900"} | ![](img/tagessschau.jpg){width="900"} | ![](img/taz.jpeg){width="800"} |
 | Süddeutsche Zeitung -@volkert2023 | RBB -@rbb2023 | taz -@taz.de2023 |
 
