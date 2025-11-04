@@ -102,7 +102,7 @@ library(ggtext)
 library(flextable)
 library(geomtextpath)
 library(colorspace)
-library(brms)
+library(brms) # stan should be installed
 
 set.seed(189)
 data_reading_true <- 
