@@ -8,11 +8,9 @@ format:
   html:
     comments:
       hypothesis: false
+    toc-depth: 3
   apaquarto-docx: default
-  apaquarto-pdf:
-   documentmode: jou
-   keep-tex: true
-    
+  apaquarto-pdf: default
 
 execute:
   freeze: auto

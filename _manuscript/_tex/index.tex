@@ -1,5 +1,5 @@
 \documentclass[
-  jou,
+  man,
   floatsintext,
   longtable,
   nolmodern,
@@ -166,8 +166,7 @@
 
 
 
-\authorsnames[{1},{2},{1}]{Samuel Merk,Sarah Bez,Kirstin Schmidt}
-
+\authorsnames{Samuel Merk,Sarah Bez,Kirstin Schmidt}
 
 
 
@@ -175,7 +174,7 @@
 
 
 \authorsaffiliations{
-{Pädagogische Hochschule Karlsruhe},{Universität Tübingen},{}}
+{Pädagogische Hochschule Karlsruhe},{}}
 
 
 
@@ -224,46 +223,13 @@ to Samuel Merk, Pädagogische Hochschule Karlsruhe, Bismarckstraße
 10, Karlsruhe 76133, Germany, Email: merk@ph-karlsruhe.de}
 }
 
-\usepackage{pbalance} 
-\usepackage{float}
 \makeatletter
-\let\oldtpt\ThreePartTable
-\let\endoldtpt\endThreePartTable
-\def\ThreePartTable{\@ifnextchar[\ThreePartTable@i \ThreePartTable@ii}
-\def\ThreePartTable@i[#1]{\begin{figure}[!htbp]
-\onecolumn
-\begin{minipage}{0.5\textwidth}
-\oldtpt[#1]
-}
-\def\ThreePartTable@ii{\begin{figure}[!htbp]
-\onecolumn
-\begin{minipage}{0.5\textwidth}
-\oldtpt
-}
-\def\endThreePartTable{
-\endoldtpt
-\end{minipage}
-\twocolumn
-\end{figure}}
-\makeatother
-
-
-\makeatletter
-\let\endoldlt\endlongtable		
+\let\endoldlt\endlongtable
 \def\endlongtable{
 \hline
-\endoldlt}
+\endoldlt
+}
 \makeatother
-
-\newenvironment{twocolumntable}% environment name
-{% begin code
-\begin{table*}[!htbp]%
-\onecolumn%
-}%
-{%
-\twocolumn%
-\end{table*}%
-}% end code
 
 \urlstyle{same}
 
@@ -507,7 +473,7 @@ Erwünschte sein.
 \begin{figure*}[H]
 
 {\caption{{Daten der (fiktiven) Studie, Pressemitteilung und Vorstellung
-der Lehrkraft}{\label{fig-AbbildungMoMa}}}}
+der Lehrkraft.}{\label{fig-AbbildungMoMa}}}}
 
 \pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-AbbildungMoMa-1.png}}
 
@@ -595,14 +561,11 @@ Lehrkräfte (z.B. \citeproc{ref-rycroft-smith2022}{Rycroft-Smith \&
 Stylianides, 2022}; \citeproc{ref-schneider2025}{Schneider et al.,
 2025}), was auch das Anliegen der vorliegenden Studie ist.
 
-\begin{ThreePartTable}
-
 \begin{table}
 
-\caption{\label{tbl-wisskommbsp}Beispiele für angebotsseitige Versuche
-verbesserter Kommunikation von Evidenz}
-
-\centering{
+{\caption{{Beispiele für angebotsseitige Versuche verbesserter
+Kommunikation von Evidenz.}{\label{tbl-wisskommbsp}}}
+\vspace{-20pt}}
 
 \fontsize{9.0pt}{10.8pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lll}
@@ -614,11 +577,7 @@ Verbesserte Kommunikation & Die Leseleistungen von Schülerinnen und Schülern i
 \bottomrule
 \end{tabular*}
 
-}
-
-\end{table}%
-
-\end{ThreePartTable}
+\end{table}
 
 \textsubscript{Quelle:
 \href{https://sammerk.github.io/StudienergebnisseBesserKommunizieren/index.qmd.html}{Artikel-Notizbuch}}
@@ -645,16 +604,17 @@ Tabelle~\ref{tbl-pisalinegraphs}), was angesichts der Anlage des PISA
 als Trendstudie (\citeproc{ref-duxf6ring2016}{Döring \& Bortz, 2016})
 konsequent erscheint.
 
-\begin{ThreePartTable}
+\begin{table}
+
+{\caption{{Verwendete Liniendiagramme in der
+Berichterstattung.}{\label{tbl-pisalinegraphs}}}
+\vspace{-20pt}}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
   >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
-\caption{Verwendete Liniendiagramme in der
-Berichterstattung.}\label{tbl-pisalinegraphs}\tabularnewline
 \toprule\noalign{}
-\endfirsthead
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
@@ -668,7 +628,7 @@ OECD (\citeproc{ref-oecd2023a}{2023}) & RBB
 (\citeproc{ref-taz.de2023}{2023}) \\
 \end{longtable}
 
-\end{ThreePartTable}
+\end{table}
 
 Diese Abbildungen erlauben einen effizienten Vergleich der Mittelwerte
 sowohl über die Zeit als auch über Variablen (hier: Fächer) hinweg. In
@@ -703,14 +663,15 @@ Varianz induziert möglicherweise auch eine wahrgenommene große
 Bedeutsamkeit der Mittelwertsdifferenz (\citeproc{ref-kale2021}{Kale et
 al., 2021}).
 
-\begin{ThreePartTable}
+\begin{table}
+
+{\caption{{Verwendete Stimuli}{\label{tbl-materials}}}
+\vspace{-20pt}}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4444}}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5556}}@{}}
-\caption{Verwendete Stimuli}\label{tbl-materials}\tabularnewline
 \toprule\noalign{}
-\endfirsthead
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
@@ -719,7 +680,7 @@ al., 2021}).
 \includegraphics[width=3.78125in,height=\textheight,keepaspectratio]{img/geomtextline.png} \\
 \end{longtable}
 
-\end{ThreePartTable}
+\end{table}
 
 Daher wurden vorliegend neben Liniendiagrammen auch überlappende
 Verteilungskurven verwendet. Um diese barriereärmer zu gestalten wurde
@@ -773,7 +734,7 @@ mithilfe des R-Pakets \{brms\} (\citeproc{ref-buxfcrkner2017}{Bürkner,
 \textsubscript{Quelle:
 \href{https://sammerk.github.io/StudienergebnisseBesserKommunizieren/index.qmd.html}{Artikel-Notizbuch}}
 
-\subsubsection{Ergebnisse}\label{ergebnisse}
+\subsection{Ergebnisse}\label{ergebnisse}
 
 Die Inspektion des Marcov-Chain-Monte-Carlo-Sampling-Prozesses zeigte
 eine zufriedenstellende Qualität bzgl. Konvergenz \((\hat{R} < 1.01)\)
@@ -808,7 +769,7 @@ Alternativhypothese einer kleineren Probability of Superiority für die
 Überlappungsgrafik ist gegeben die Daten 14,8-fach wahrscheinlicher (als
 die Nullhypothese einer größeren Probability of Superiority).
 
-\subsubsection{Limitationen}\label{limitationen}
+\subsection{Limitationen}\label{limitationen}
 
 Die vorgestellte Studie stellt lediglich ein kleines Experiment an einer
 selektiven Gelegenheitsstichprobe ohne Präregistrierung dar. Interne und
@@ -868,13 +829,14 @@ trivial ist, zeigt z.B. die Tatsache, dass Guidelines von
 Fachgesellschaften wie z.B. der American Psychological Association
 (\citeproc{ref-americanpsychologicalassociation2019}{2019}) die
 Verwendung von Effektstärken fordern, diese aber in Pressemitteilungen
-(etwa der American Educational Research Association) und selbst in
-Fachzeitschriften selten sind (\citeproc{ref-mcmillan2011}{McMillan \&
-Jennifer, 2011}). Für eine Wissenschaftskommunikation, die sich an die
-Praxis richtet scheint es also plausibel, zu schlussfolgern, dass es
-unter Forschenden noch nicht verbreitet scheint, sich literaturbasiert
-darüber Gedanken zu machen, inwiefern die eigene
-Wissenschaftskommunikation z.B. für Lehrkräfte günstig rezipierbar ist.
+(etwa der American Educational Research Association) äußerst selten und
+selbst in Fachzeitschriften nicht unbedingt erwartbar sind
+(\citeproc{ref-mcmillan2011}{McMillan \& Jennifer, 2011}). Für eine
+Wissenschaftskommunikation, die sich an die Praxis richtet scheint es
+also plausibel, zu schlussfolgern, dass es unter Forschenden noch nicht
+verbreitet scheint, sich literaturbasiert darüber Gedanken zu machen,
+inwiefern die eigene Wissenschaftskommunikation z.B. für Lehrkräfte
+günstig rezipierbar ist.
 
 Doch selbst ein Bewusstsein für die Fallstricke der Kommunikation
 wissenschaftlicher Ergebnisse schützt nicht zwangläufig vor der
@@ -988,9 +950,10 @@ Schultheorie} (1. Aufl). utb.
 \url{https://doi.org/10.36198/9783838541808}
 
 \bibitem[\citeproctext]{ref-bohrer2025}
-Bohrer, K., Schmidt, K., \& Merk, S. (2025). Zwei Studien, ein Ergebnis:
-Lehramtsstudierende unterliegen im Umgang mit Evidenz dem Ankereffekt.
-\emph{Zeitschrift für Erziehungswissenschaft}.
+Bohrer, K., Schmidt, K., \& Merk, S. (2025). {Zwei Studien, ein
+Ergebnis: Lehramtsstudierende unterliegen im Umgang mit Evidenz dem
+Ankereffekt}. \emph{Zeitschrift für Erziehungswissenschaft},
+\emph{28}(4), 951--980. \url{https://doi.org/10.1007/s11618-025-01309-z}
 
 \bibitem[\citeproctext]{ref-bromme2014e}
 Bromme, R., Prenzel, M., \& Jäger, M. (2014). Empirische
@@ -1288,8 +1251,8 @@ measurements.} The Science Press.
 
 \bibitem[\citeproctext]{ref-vehtari2021prefix}
 Vehtari, A., Gelman, A., Simpson, D., Carpenter, B., \& Bürkner, P.-C.
-(2021). Rank-Normalization, Folding, and Localization: An Improved
-\(\widehat{R}\) for Assessing Convergence of MCMC (with Discussion).
+(2021). Rank-normalization, folding, and localization: An improved
+\(\widehat{R}\) for assessing convergence of MCMC (with discussion).
 \emph{Bayesian Analysis}, \emph{16}(2), 667--718.
 \url{https://doi.org/10.1214/20-BA1221}
 

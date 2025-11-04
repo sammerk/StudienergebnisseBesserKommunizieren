@@ -1,0 +1,30 @@
+\begin{figure*}[H]
+
+{\caption{{Daten der (fiktiven) Studie, Pressemitteilung und Vorstellung
+der Lehrkraft.}{\label{fig-AbbildungMoMa}}}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-AbbildungMoMa-1.png}}
+
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[H]
+
+{\caption{{Illustration der Unabhängigkeit von Mittelwertsdifferenz und
+Größe des Effekts}{\label{fig-mwdiffstreuung}}}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-mwdiffstreuung-1.png}}
+
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[H]
+
+{\caption{{Geschätze Effektstärke (Probability of Superiority) nach
+Stimulus. Beide Gruppen zeigen einen sehr deutlichen Practical
+Significance Bias (Abstand von Median und wahrem
+Wert).}{\label{fig-plotresults}}}}
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-plotresults-1.png}}
+
+\end{figure*}
