@@ -45,7 +45,7 @@ author-note:
   disclosures:
     data-sharing: Die Daten und Code dieses Artikels sind unter https://github.com/sammerk/StudienergebnisseBesserKommunizieren abrufbar.
     conflict-of-interest: Die Autor\:innen haben keine Interessenskonflikte zu berichten.
-abstract: "Lehrkräfte treffen tagtäglich unzählige Entscheidungen. Dabei rekurrieren sie vornehmlich auf persönliche Erfahrung, Konzeptwissen oder Heuristiken. Evidenz aus Bildungswissenschaften und Fachdidaktiken wird das Potenzial zugeschrieben, diese Entscheidungsprozesse egänzend zu informieren und zu objektivieren. Dazu ist es jedoch notwendig, dass die betroffenen Lehrkräfte diese Evidenz nicht fehlinterpretieren, was wiederum entsprechende Kompetenzen der Lehrkräfte oder besonders geschickte Wissenschaftkommunikation voraussetzt. Der vorliegende Beitrag untersucht daher die Möglichkeiten und Grenzen der Kommunikation von Effektstärken an Lehramtsstudierende am Beispiel der Berichterstattung zu PISA 2022. Im Ergebnis zeigt sich, dass Lehramtsstudierende Effektstärken sehr ungenau (Noise) ein- und im Mittel drastisch überschätzen (Practical Significance Bias). Dieser Bias konnte durch die Verwendung alternativer Visualisierungen lediglich partiell reduziert werden. Im Lichte dieser Ergebnisse wird diskutiert, inwiefern eine kokonstruktive Entwicklung von  Wissenschaftskommunikationsformaten evidenzinformierte Entscheidungen von Lehrkräften katalysieren kann."
+abstract: "Lehrkräfte treffen tagtäglich unzählige Entscheidungen. Dabei rekurrieren sie vornehmlich auf persönliche Erfahrung, Konzeptwissen oder Heuristiken. Evidenz aus Bildungswissenschaften und Fachdidaktiken wird das Potenzial zugeschrieben, diese Entscheidungsprozesse ergänzend zu informieren und zu objektivieren. Dazu ist es jedoch notwendig, dass die betroffenen Lehrkräfte diese Evidenz nicht fehlinterpretieren, was wiederum entsprechende Kompetenzen der Lehrkräfte oder besonders geschickte Wissenschaftskommunikation voraussetzt. Der vorliegende Beitrag untersucht daher die Möglichkeiten und Grenzen der Kommunikation von Effektstärken an Lehramtsstudierende am Beispiel der Berichterstattung zu PISA 2022. Im Ergebnis zeigt sich, dass Lehramtsstudierende Effektstärken sehr ungenau (Noise) ein- und im Mittel drastisch überschätzen (Practical Significance Bias). Dieser Bias konnte durch die Verwendung alternativer Visualisierungen lediglich partiell reduziert werden. Im Lichte dieser Ergebnisse wird diskutiert, inwiefern eine kokonstruktive Entwicklung von Wissenschaftskommunikationsformaten evidenzinformierte Entscheidungen von Lehrkräften katalysieren kann."
 keywords: [Lehrpersonenprofessionalisierung, Evidenzinformierte Praxis, Wissenschaftskommunikation, Practical Significance Bias]
 floatsintext: true
 numbered-lines: false
@@ -376,7 +376,7 @@ Daher wurden vorliegend neben Liniendiagrammen auch überlappende Verteilungskur
 ```{r}
 #| label: dataimport
 data <- 
-  read_csv("data/data_cummunication_PISA.csv") %>% 
+  read_csv(here::here("data/data_cummunication_PISA.csv")) %>% 
   mutate(
       POS = case_when(
         is.na(G003_01) ~ G004_01,

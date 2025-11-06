@@ -7,4 +7,6 @@ index_cache/
 .DS_Store
 .quarto
 Fahne_1.pdf
+data/
+index_files/
 /.quarto/
